@@ -14,3 +14,7 @@ Description:         This package includes helper functions that converts data-s
 Library
   Exposed-modules:     System.Handle.Enumerator, System.Handle.String, System.Posix.Handle
   Build-depends:       base (>= 4), bytestring, utf8-string, unix, enumerator, transformers
+
+Source-Repository head
+  Type:                hg
+  Location:            http://bitbucket.org/khibino/data-handle
