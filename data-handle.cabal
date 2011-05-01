@@ -1,0 +1,16 @@
+Name:                data-handle
+Version:             0.1
+Synopsis:            File handle from/to Data helper functions
+License:             BSD3
+License-file:        LICENSE
+Author:              Kei Hibino <ex8k.hibino@gmail.com>
+Maintainer:          ex8k.hibino@gmail.com
+Category:            System
+Build-type:          Simple
+Cabal-version:       >=1.2
+Description:         This package includes helper functions that converts data-stream written to
+                     input-handle info string-like data, or read from string-like data to output-handle
+    
+Library
+  Exposed-modules:     System.Handle.Enumerator, System.Handle.String, System.Posix.Handle
+  Build-depends:       base (>= 4), bytestring, utf8-string, unix, enumerator, transformers
