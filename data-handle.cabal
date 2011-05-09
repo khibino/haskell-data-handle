@@ -12,9 +12,9 @@ Description:         This package includes helper functions that converts data-s
                      input-handle into string-like data, or read from string-like data to output-handle.
     
 Library
-  Exposed-modules:     System.Handle.Binary, System.Handle.Enumerator, System.Handle.String,
+  Exposed-modules:     System.Handle.Binary, System.Handle.String,
                        System.Handle, System.Posix.Handle
-  Build-depends:       base (>= 4), bytestring, utf8-string, unix, enumerator, transformers
+  Build-depends:       base (>= 4), bytestring, utf8-string, unix, transformers
 
 Source-Repository head
   Type:                hg
