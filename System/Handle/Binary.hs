@@ -1,4 +1,19 @@
 
+-----------------------------------------------------------------------------
+-- |
+-- Module      : System.Handle.String
+-- Copyright   : 2011 Kei Hibino
+-- License     : BSD3
+--
+-- Maintainer  : ex8k.hibino@gmail.com
+-- Stability   : experimental
+-- Portability : non-portable (requires POSIX)
+--
+-- This package includes helper functions that converts data-stream written to
+-- input-handle into ByteString data, or read from ByteString data to output-handle.
+--
+-----------------------------------------------------------------------------
+
 module System.Handle.Binary (
   connectTo,
   outputByteString,
@@ -31,15 +46,19 @@ readAll =  readLoop
                          then BS.append <$> BS.hGetNonBlocking fh bufSize <*> readLoop fh
                          else error "hWaitForInput bug?"
 
+{- | Get a byte-string and a writable handle.
+     This byte-string is constructed by written data to this handle. -}
 connectTo :: IO (IO ByteString, Handle)
 connectTo =  first readAll <$> createPipe
 
+{- | Get a byte-string from a function that writes data stream to handle. -}
 outputByteString :: (Handle -> IO ()) -> IO ByteString
 outputByteString wproc =
   do (act, wfh) <- connectTo
      _ <- forkIO (wproc wfh >> hClose wfh)
      act
 
+{- | Get a handle of a byte-string. -}
 connectFrom :: ByteString -> IO Handle
 connectFrom s =
   do (rfh, wfh) <- createPipe
